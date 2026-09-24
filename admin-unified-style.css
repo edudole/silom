@@ -1,0 +1,101 @@
+/* Learning Platform 360 — Unified Admin Controls
+   Applies consistently to Template1–Template9 without changing layout/behavior. */
+
+:root{
+  --lp-admin-red:#ff1018;
+  --lp-admin-lime:#ceff00;
+  --lp-admin-white:#ffffff;
+}
+
+/* One visual language for every requested admin action button. */
+html body .editwebsite-btn.editwebsite-btn,
+html body #templateSwitcherButton,
+html body #heroContentEditorButton,
+html body #adminAddSectionButton,
+html body .admin-add-section-button.admin-add-section-button,
+html body .admin-manage-data-button.admin-manage-data-button,
+html body .learning-admin-button.learning-admin-button,
+html body #manageNewsletterButton,
+html body #manageFacebookButton,
+html body .cliproom-admin-course-button.cliproom-admin-course-button,
+html body .shopactivity-admin-edit-button.shopactivity-admin-edit-button,
+html body #manageButtonSectionButton,
+html body #manageFeaturedBooksButton{
+  background:var(--lp-admin-red)!important;
+  background-image:none!important;
+  color:var(--lp-admin-white)!important;
+  border:3px solid var(--lp-admin-lime)!important;
+  border-radius:12px!important;
+  box-sizing:border-box!important;
+  text-decoration:none!important;
+}
+
+html body .editwebsite-btn.editwebsite-btn:hover,
+html body #templateSwitcherButton:hover,
+html body #heroContentEditorButton:hover,
+html body #adminAddSectionButton:hover,
+html body .admin-add-section-button.admin-add-section-button:hover,
+html body .admin-manage-data-button.admin-manage-data-button:hover,
+html body .learning-admin-button.learning-admin-button:hover,
+html body #manageNewsletterButton:hover,
+html body #manageFacebookButton:hover,
+html body .cliproom-admin-course-button.cliproom-admin-course-button:hover,
+html body .shopactivity-admin-edit-button.shopactivity-admin-edit-button:hover,
+html body #manageButtonSectionButton:hover,
+html body #manageFeaturedBooksButton:hover{
+  background:#e80d15!important;
+  background-image:none!important;
+  color:var(--lp-admin-white)!important;
+  border-color:var(--lp-admin-lime)!important;
+  filter:none!important;
+}
+
+html body .editwebsite-btn.editwebsite-btn :is(i,svg),
+html body #templateSwitcherButton :is(i,svg),
+html body #heroContentEditorButton :is(i,svg),
+html body #adminAddSectionButton :is(i,svg),
+html body .admin-manage-data-button.admin-manage-data-button :is(i,svg),
+html body .learning-admin-button.learning-admin-button :is(i,svg),
+html body #manageNewsletterButton :is(i,svg),
+html body #manageFacebookButton :is(i,svg),
+html body .cliproom-admin-course-button.cliproom-admin-course-button :is(i,svg),
+html body .shopactivity-admin-edit-button.shopactivity-admin-edit-button :is(i,svg),
+html body #manageButtonSectionButton :is(i,svg),
+html body #manageFeaturedBooksButton :is(i,svg){
+  color:var(--lp-admin-white)!important;
+}
+
+/* Template1-style admin SECTION guide: marker hugs the right edge and the
+   red line continues across the complete SECTION width. */
+html body.admin-edit-mode.admin-edit-mode section[data-admin-section][data-admin-section]{
+  position:relative!important;
+  border-top:6px solid var(--lp-admin-red)!important;
+  box-sizing:border-box!important;
+}
+html body.admin-edit-mode.admin-edit-mode section[data-admin-section][data-admin-section] > .admin-section-marker.admin-section-marker{
+  top:-6px!important;
+  right:0!important;
+  left:auto!important;
+  background:var(--lp-admin-red)!important;
+  color:#fff!important;
+  border-radius:0 0 0 14px!important;
+  transform:none!important;
+}
+html body.admin-edit-mode.admin-edit-mode section[data-admin-section][data-admin-section] > .admin-section-marker.admin-section-marker .admin-section-control{
+  border-color:#fff!important;
+  color:#fff!important;
+}
+html body.admin-edit-mode.admin-edit-mode section[data-admin-section][data-admin-section] > .admin-section-marker.admin-section-marker .admin-section-control:hover{
+  background:#fff!important;
+  color:var(--lp-admin-red)!important;
+}
+
+@media(max-width:760px){
+  html body.admin-edit-mode.admin-edit-mode section[data-admin-section][data-admin-section]{
+    border-top-width:4px!important;
+  }
+  html body.admin-edit-mode.admin-edit-mode section[data-admin-section][data-admin-section] > .admin-section-marker.admin-section-marker{
+    top:-4px!important;
+    right:0!important;
+  }
+}
