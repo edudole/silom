@@ -1,0 +1,55 @@
+/* LP360 shared sticky header fix - 2026-09-24
+   Loaded after the active Template CSS so every Template1-9 keeps site-header sticky. */
+
+.site-header{
+  position:sticky!important;
+  top:0!important;
+  z-index:500!important;
+}
+
+/* Template6: header must sit directly against the announcement bar.
+   Remove the old negative hero-overlap margin/gap. */
+body.lp-template6 .site-header{
+  position:sticky!important;
+  top:0!important;
+  margin-top:0!important;
+  margin-bottom:0!important;
+  z-index:500!important;
+}
+
+/* Template8: old header was absolute and could be covered by announcement.
+   Return it to normal document flow, then pin it at the viewport top on scroll. */
+body.lp-template8 .site-header{
+  position:sticky!important;
+  top:0!important;
+  left:auto!important;
+  right:auto!important;
+  transform:none!important;
+  margin:0 auto!important;
+  z-index:500!important;
+}
+body.lp-template8 .announcement,
+body.lp-template8 .announcement-bar,
+body.lp-template8 #announcementBar{
+  position:relative!important;
+  z-index:490!important;
+}
+
+/* Template9: old nav was absolute over the hero and could collide with announcement.
+   Sticky flow prevents overlap; solid theme background keeps white nav text readable. */
+body.lp-template9 .site-header{
+  position:sticky!important;
+  top:0!important;
+  left:auto!important;
+  right:auto!important;
+  transform:none!important;
+  margin:0 auto!important;
+  z-index:500!important;
+  background:linear-gradient(135deg,var(--t12-deep-2,#07535f),var(--t12-teal,#078c8c))!important;
+}
+body.lp-template9 .announcement,
+body.lp-template9 .announcement-bar,
+body.lp-template9 #announcementBar{
+  position:relative!important;
+  z-index:490!important;
+}

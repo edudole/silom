@@ -1,0 +1,127 @@
+/* LP360 popup lock: keep admin/SweetAlert popups visually identical to Template1
+   even while Template2-Template9 is active. Loaded after the active template CSS. */
+html body .swal2-container{
+  position:fixed!important;
+  z-index:65000!important;
+  inset:0!important;
+  box-sizing:border-box!important;
+  width:100vw!important;
+  max-width:none!important;
+  height:100vh!important;
+  max-height:none!important;
+  margin:0!important;
+  padding:.625em!important;
+  overflow-x:hidden!important;
+  display:grid!important;
+  grid-template-areas:"top-start top top-end" "center-start center center-end" "bottom-start bottom-center bottom-end"!important;
+  grid-template-rows:minmax(min-content,auto) minmax(min-content,auto) minmax(min-content,auto)!important;
+  background:transparent;
+  font-family:"Kanit",sans-serif!important;
+  transform:none!important;
+}
+html body .swal2-container.swal2-backdrop-show{background:rgba(0,0,0,.4)!important}
+html body .swal2-container.swal2-center>.swal2-popup{grid-column:2!important;grid-row:2!important;place-self:center center!important}
+html body .swal2-container .swal2-popup{
+  position:relative!important;
+  box-sizing:border-box!important;
+  grid-template-columns:minmax(0,100%)!important;
+  max-width:calc(100vw - 24px)!important;
+  max-height:calc(100vh - 24px)!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:5px!important;
+  background:#fff!important;
+  color:#545454!important;
+  box-shadow:none;
+  transform:none!important;
+  overflow-y:auto;
+}
+html body .swal2-container .swal2-title{
+  position:relative!important;
+  max-width:100%!important;
+  margin:0!important;
+  padding:.8em 1em 0!important;
+  color:#545454!important;
+  font-size:1.875em!important;
+  font-weight:600!important;
+  line-height:1.2!important;
+  text-align:center!important;
+  text-transform:none!important;
+}
+html body .swal2-container .swal2-html-container{
+  z-index:1!important;
+  margin:1em 1.6em .3em!important;
+  padding:0!important;
+  overflow:auto!important;
+  color:#545454!important;
+  font-size:1.125em!important;
+  font-weight:400!important;
+  line-height:normal!important;
+  text-align:center!important;
+}
+html body .swal2-container .swal2-actions{
+  display:flex!important;
+  z-index:1!important;
+  box-sizing:border-box!important;
+  flex-wrap:wrap!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:auto!important;
+  margin:1.25em auto 0!important;
+  padding:0!important;
+  background:transparent!important;
+}
+html body .swal2-container .swal2-styled{
+  margin:.3125em!important;
+  padding:.625em 1.1em!important;
+  border:0!important;
+  border-radius:.25em!important;
+  box-shadow:none!important;
+  font:500 1em/1.2 "Kanit",sans-serif!important;
+  cursor:pointer!important;
+}
+html body .swal2-container .swal2-cancel{background:#6c757d!important;color:#fff!important}
+
+/* Neutral Template1 form/table defaults inside SweetAlert.
+   These defeat broad Template4/5/8/9 selectors such as `table thead th`,
+   `textarea`, and `[class$="-container"]`. */
+html body .swal2-container input:not([type="color"]),
+html body .swal2-container select,
+html body .swal2-container textarea{
+  box-sizing:border-box!important;
+  background:#fff!important;
+  color:#334155!important;
+  border:1px solid #cbd5e1!important;
+  border-radius:8px!important;
+  box-shadow:none!important;
+  outline:none;
+  font-family:"Kanit",sans-serif!important;
+}
+html body .swal2-container table{border-collapse:collapse!important;border-spacing:0!important;background:#fff!important}
+html body .swal2-container table thead th{background:#1e293b!important;color:#fff!important;border-color:#d7dce3!important}
+html body .swal2-container table tbody td{background:#fff!important;color:#334155!important}
+html body .swal2-container table tbody tr:hover td,
+html body .swal2-container table tbody tr:nth-child(even) td{background:#fff!important}
+
+/* Exact Template1 appearance for the page editor shown by edit-website.js. */
+html body .swal2-container .editwebsite-popup{text-align:left!important}
+html body .swal2-container .editwebsite-table{width:100%!important;border-collapse:collapse!important;table-layout:fixed!important;background:#fff!important}
+html body .swal2-container .editwebsite-table th,
+html body .swal2-container .editwebsite-table td{border:1px solid #d7dce3!important;padding:10px!important;vertical-align:top!important}
+html body .swal2-container .editwebsite-table th{background:#fff1f2!important;color:#991b1b!important;text-align:center!important;font-weight:600!important}
+html body .swal2-container .editwebsite-table td{background:#fff!important;color:#334155!important}
+html body .swal2-container .editwebsite-table td:first-child{width:36%!important;background:#f8fafc!important;font-weight:500!important}
+html body .swal2-container .editwebsite-input{
+  width:100%!important;min-height:42px!important;padding:9px 10px!important;
+  border:1px solid #cbd5e1!important;border-radius:7px!important;
+  background:#fff!important;color:#111827!important;
+  font:400 15px/1.45 "Kanit",sans-serif!important;resize:vertical!important;
+}
+html body .swal2-container .editwebsite-input:focus{border-color:#dc2626!important;outline:2px solid rgba(220,38,38,.15)!important}
+html body .swal2-container .editwebsite-status{min-height:24px!important;margin-top:10px!important;color:#475569!important;text-align:center!important}
+
+@media(max-width:700px){
+  html body .swal2-container{padding:8px!important}
+  html body .swal2-container .swal2-html-container{margin:.8em .7em .2em!important}
+  html body .swal2-container .swal2-title{font-size:1.45em!important}
+}

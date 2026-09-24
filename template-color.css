@@ -1,0 +1,61 @@
+#templateColorButton{position:fixed!important;right:0!important;top:calc(50% + 54px)!important;z-index:65010!important;border-radius:10px 0 0 10px!important;white-space:nowrap!important;cursor:pointer!important}
+#templateColorButton[hidden],#templateColorDialog[hidden]{display:none!important}
+@media(max-width:640px){#templateColorButton{top:calc(54% + 52px)!important;font-size:11px!important}}
+#templateColorDialog{position:fixed!important;inset:0!important;z-index:70020!important;display:grid!important;place-items:center!important;padding:16px!important;background:rgba(17,24,39,.58)!important}
+#templateColorDialog .template-color-panel{width:min(620px,100%)!important;max-height:min(90vh,780px)!important;overflow:auto!important;background:#fff!important;color:#1f2937!important;border-radius:16px!important;padding:22px!important;box-shadow:0 22px 70px rgba(0,0,0,.3)!important}
+#templateColorDialog .template-color-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}
+#templateColorDialog h2{margin:0!important;font-size:22px!important;color:#1f2937!important}
+#templateColorDialog .template-color-close{border:0!important;background:#f1f5f9!important;color:#334155!important;width:34px!important;height:34px!important;border-radius:8px!important;cursor:pointer!important;font-size:22px!important}
+#templateColorDialog .template-color-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+#templateColorDialog .template-color-choice{padding:8px!important;background:#fff!important;color:#1f2937!important;border:2px solid #e2e8f0!important;border-radius:12px!important;cursor:pointer!important;text-align:left!important}
+#templateColorDialog .template-color-choice.is-selected{border-color:#2563eb!important;box-shadow:0 0 0 2px #bfdbfe!important}
+#templateColorDialog .template-color-preview{position:relative;display:block;height:86px;overflow:hidden;background:var(--sample-soft);border-radius:7px}
+#templateColorDialog .sample-nav{position:absolute;left:5%;top:7%;width:90%;height:15%;background:#fff;border-radius:3px}
+#templateColorDialog .sample-heading{position:absolute;left:8%;top:37%;width:43%;height:9%;background:var(--sample-dark);border-radius:2px}
+#templateColorDialog .sample-copy{position:absolute;left:8%;top:52%;width:35%;height:5%;background:var(--sample-secondary);opacity:.6;border-radius:2px}
+#templateColorDialog .sample-button{position:absolute;left:8%;top:67%;width:25%;height:13%;background:var(--sample-primary);border-radius:9px}
+#templateColorDialog .sample-image{position:absolute;right:5%;top:28%;width:39%;height:62%;background:linear-gradient(135deg,var(--sample-secondary),var(--sample-primary));border-radius:14px 2px 2px 14px}
+#templateColorDialog .template-color-name{display:block;margin:8px 2px 2px;font-size:13px;font-weight:700}
+#templateColorDialog .template-color-status{min-height:22px;margin:16px 0 10px;color:#475569!important;font-size:13px}
+#templateColorDialog .template-color-actions{display:flex;justify-content:flex-end;gap:10px}
+#templateColorDialog .template-color-actions button{padding:9px 17px!important;border-radius:8px!important;cursor:pointer!important;font-weight:700!important}
+#templateColorDialog .template-color-cancel{background:#fff!important;color:#334155!important;border:1px solid #cbd5e1!important}
+#templateColorDialog .template-color-save{background:#2563eb!important;color:#fff!important;border:1px solid #2563eb!important}
+#templateColorDialog .template-color-save.is-saving::before{content:"";display:inline-block;width:12px;height:12px;border:2px solid white;border-right-color:transparent;border-radius:50%;margin-right:7px;animation:lpcolor-spin .7s linear infinite}
+@keyframes lpcolor-spin{to{transform:rotate(360deg)}}
+/* Palette 1 preserves each Template's original design. Other palettes change only three areas. */
+body.lp-color-themed{
+  background-color:var(--lp-color-soft)!important;
+}
+/* 1. Announcement */
+body.lp-color-themed .announcement,
+body.lp-color-themed .announcement-bar,
+body.lp-color-themed #announcementBar{
+  background:var(--lp-color-dark)!important;
+  color:#fff!important;
+}
+body.lp-color-themed .announcement #announcementText,
+body.lp-color-themed .announcement .brand,
+body.lp-color-themed .announcement .brand-light{
+  color:#fff!important;
+}
+/* 2. Site header, including its text so it remains legible. */
+body.lp-color-themed .site-header{
+  background:var(--lp-color-primary)!important;
+  border-color:var(--lp-color-primary)!important;
+}
+body.lp-color-themed .site-header .brand,
+body.lp-color-themed .site-header .main-nav>a,
+body.lp-color-themed .site-header .main-nav-dropdown-toggle{
+  color:#fff!important;
+  text-shadow:none!important;
+}
+body.lp-color-themed .site-header .main-nav>a:hover,
+body.lp-color-themed .site-header .main-nav-dropdown-toggle:hover{
+  background:rgba(255,255,255,.16)!important;
+  color:#fff!important;
+}
+/* 3. Page background. Preserve the sheet image and existing hero overlay. */
+body.lp-color-themed #home.hero{
+  background-color:var(--lp-color-soft)!important;
+}

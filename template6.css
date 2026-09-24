@@ -1,0 +1,503 @@
+/* =====================================================================
+   Learning Platform 360 — Template6
+   Water Sports / Ocean / Aqua Portal
+   Visual layer only. Existing IDs, APIs, login, admin CRUD, sheets and
+   application behavior are intentionally preserved.
+   ===================================================================== */
+:root{
+  --t9-black:#1f1f1f;
+  --t9-charcoal:#242424;
+  --t9-deep:#063c4d;
+  --t9-deep-2:#07586a;
+  --t9-ocean:#0b7f98;
+  --t9-aqua:#10d7d2;
+  --t9-aqua-2:#20c9cc;
+  --t9-sky:#dff8f8;
+  --t9-white:#fff;
+  --t9-ink:#1e2b33;
+  --t9-muted:#6e7f87;
+  --t9-line:#dce9ea;
+  --t9-soft:#f5fbfb;
+  --t9-shadow:0 18px 46px rgba(4,61,75,.16);
+  --t9-shadow-soft:0 9px 25px rgba(4,61,75,.10);
+  --t9-radius:4px;
+  --t9-max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body.lp-template6{
+  margin:0;
+  min-height:100vh;
+  color:var(--t9-ink);
+  background:#fff;
+  font-family:"Kanit","Sarabun",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+body.lp-template6 a{color:inherit}
+body.lp-template6 img{max-width:100%}
+
+/* ---------- black utility bar ---------- */
+body.lp-template6 .announcement,
+body.lp-template6 .announcement-bar,
+body.lp-template6 #announcementBar{
+  position:relative;
+  z-index:220;
+  background:var(--t9-black)!important;
+  color:#fff!important;
+  border:0!important;
+}
+body.lp-template6 .announcement-inner,
+body.lp-template6 .announcement-content{
+  width:min(var(--t9-max),calc(100% - 28px))!important;
+  max-width:var(--t9-max)!important;
+  min-height:42px;
+  margin:0 auto!important;
+  padding:6px 10px!important;
+  border:0!important;
+  background:transparent!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+body.lp-template6 #announcementText{color:#fff!important;font-size:12px!important;font-weight:600!important}
+body.lp-template6 .announcement .brand-light{display:none!important}
+body.lp-template6 .announcement-social,
+body.lp-template6 .admin-access-button{
+  border:1px solid rgba(255,255,255,.24)!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.07)!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+body.lp-template6 .admin-access-button:hover,
+body.lp-template6 .announcement-social:hover{background:var(--t9-aqua)!important;border-color:var(--t9-aqua)!important;color:#08343f!important}
+
+/* ---------- transparent navigation over hero ---------- */
+body.lp-template6 .site-header{
+  position:relative;
+  z-index:210;
+  width:100%;
+  margin:0 0 -82px;
+  border:0!important;
+  border-radius:0!important;
+  background:linear-gradient(180deg,rgba(3,48,61,.92),rgba(3,48,61,.68))!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+  backdrop-filter:blur(5px);
+}
+body.lp-template6 .site-header .container,
+body.lp-template6 .site-header .nav-wrap{
+  width:min(var(--t9-max),calc(100% - 28px))!important;
+  max-width:var(--t9-max)!important;
+  min-height:82px;
+  margin:0 auto!important;
+  padding:0 8px!important;
+}
+body.lp-template6 .site-header .brand{
+  min-width:190px;
+  max-width:300px;
+  padding:8px 12px!important;
+  display:inline-flex!important;
+  align-items:center;
+  gap:10px;
+  color:#fff!important;
+  font-size:20px!important;
+  font-weight:900!important;
+  letter-spacing:.035em;
+  text-decoration:none!important;
+  text-transform:uppercase;
+}
+body.lp-template6 .brand-icon{
+  width:44px!important;
+  height:44px!important;
+  flex:0 0 44px;
+  border:2px solid rgba(255,255,255,.65)!important;
+  border-radius:50%!important;
+  background-color:rgba(255,255,255,.12)!important;
+  box-shadow:none!important;
+}
+body.lp-template6 .main-nav{flex:1;justify-content:center;gap:1px!important}
+body.lp-template6 .main-nav>a,
+body.lp-template6 .main-nav-dropdown-toggle{
+  position:relative;
+  min-height:82px;
+  padding:0 12px!important;
+  display:inline-flex!important;
+  align-items:center;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:#fff!important;
+  font-size:12px!important;
+  font-weight:600!important;
+  transition:.18s ease;
+}
+body.lp-template6 .main-nav>a::after,
+body.lp-template6 .main-nav-dropdown-toggle::after{
+  content:"";
+  position:absolute;
+  left:12px;right:12px;bottom:17px;
+  height:2px;
+  background:var(--t9-aqua);
+  transform:scaleX(0);
+  transition:transform .18s ease;
+}
+body.lp-template6 .main-nav>a:hover,
+body.lp-template6 .main-nav-dropdown-toggle:hover,
+body.lp-template6 .main-nav-dropdown.is-open .main-nav-dropdown-toggle{color:var(--t9-aqua)!important;background:rgba(255,255,255,.04)!important}
+body.lp-template6 .main-nav>a:hover::after,
+body.lp-template6 .main-nav-dropdown-toggle:hover::after,
+body.lp-template6 .main-nav-dropdown.is-open .main-nav-dropdown-toggle::after{transform:scaleX(1)}
+body.lp-template6 .main-nav-dropdown-menu{
+  margin-top:0!important;
+  padding:8px!important;
+  border:0!important;
+  border-top:3px solid var(--t9-aqua)!important;
+  border-radius:0 0 5px 5px!important;
+  background:#fff!important;
+  box-shadow:0 18px 40px rgba(3,44,56,.24)!important;
+}
+body.lp-template6 .main-nav-dropdown-menu a{padding:10px 12px!important;border-radius:3px!important;color:var(--t9-deep)!important}
+body.lp-template6 .main-nav-dropdown-menu a:hover{background:var(--t9-sky)!important;color:var(--t9-ocean)!important}
+body.lp-template6 .nav-profile-actions{min-height:82px;gap:7px;padding-left:10px;border-left:1px solid rgba(255,255,255,.2)}
+body.lp-template6 .profile-cart-btn,
+body.lp-template6 .mobile-profile-point,
+body.lp-template6 .nav-profile-actions>button{
+  border:0!important;
+  border-radius:999px!important;
+  background:#fff!important;
+  color:var(--t9-deep)!important;
+  box-shadow:none!important;
+  font-weight:800!important;
+}
+body.lp-template6 .mobile-profile-photo{width:39px!important;height:39px!important;border:3px solid var(--t9-aqua)!important;border-radius:50%!important;box-shadow:none!important}
+
+/* ---------- ocean hero ---------- */
+body.lp-template6 #home.hero,
+body.lp-template6 .hero{
+  position:relative;
+  width:100%;
+  min-height:600px;
+  height:min(760px,78vh);
+  margin:0;
+  padding-top:82px;
+  border:0!important;
+  border-radius:0!important;
+  background:linear-gradient(135deg,#0c7d96,#0cc8c6)!important;
+  box-shadow:none!important;
+  overflow:hidden;
+  isolation:isolate;
+}
+body.lp-template6 #websiteHeroOverlay.hero-overlay{
+  inset:0!important;
+  background-size:cover!important;
+  background-position:center 45%!important;
+  filter:saturate(1.12) contrast(1.02) brightness(.82);
+}
+body.lp-template6 #home.hero::before,
+body.lp-template6 .hero::before{
+  content:"";
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(3,62,76,.52) 0%,rgba(3,78,92,.22) 45%,rgba(1,55,68,.18) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.06),rgba(1,66,77,.13));
+}
+/* white ocean curve + aqua rim */
+body.lp-template6 #home.hero::after,
+body.lp-template6 .hero::after{
+  content:"";
+  position:absolute;
+  left:-10%;right:-10%;bottom:-146px;height:250px;z-index:3;
+  border-top:9px solid var(--t9-aqua);
+  border-radius:50% 50% 0 0 / 100% 100% 0 0;
+  background:#fff;
+  transform:rotate(-.5deg);
+  pointer-events:none;
+}
+body.lp-template6 .hero-content{
+  position:relative;z-index:5;
+  width:min(var(--t9-max),calc(100% - 32px))!important;
+  max-width:var(--t9-max)!important;
+  min-height:100%;
+  margin:0 auto!important;
+  padding:98px 58px 160px!important;
+  display:flex!important;
+  flex-direction:column;
+  align-items:flex-start!important;
+  justify-content:center;
+  text-align:left!important;
+}
+body.lp-template6 #heroKickerText,
+body.lp-template6 .hero .eyebrow{
+  margin:0 0 8px!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  color:var(--t9-aqua)!important;
+  font-size:15px!important;
+  font-weight:900!important;
+  letter-spacing:.18em!important;
+  text-transform:uppercase;
+  text-shadow:0 3px 14px rgba(0,0,0,.28);
+}
+body.lp-template6 #heroTitleText,
+body.lp-template6 .hero h1{
+  max-width:700px;
+  margin:0!important;
+  color:#fff!important;
+  font-family:"Brush Script MT","Segoe Script","Kanit","Sarabun",cursive!important;
+  font-size:clamp(48px,7vw,92px)!important;
+  font-weight:900!important;
+  font-style:italic;
+  line-height:.95!important;
+  letter-spacing:-.035em!important;
+  text-shadow:0 8px 28px rgba(0,0,0,.26);
+}
+body.lp-template6 #heroDescriptionText,
+body.lp-template6 .hero p{
+  max-width:620px!important;
+  margin:14px 0 0!important;
+  color:rgba(255,255,255,.96)!important;
+  font-size:clamp(14px,1.4vw,18px)!important;
+  font-weight:600!important;
+  line-height:1.6!important;
+  text-shadow:0 3px 16px rgba(0,0,0,.24);
+}
+body.lp-template6 .floating-dot{display:none!important}
+body.lp-template6 .editwebsite{z-index:12!important;top:96px!important;right:18px!important}
+body.lp-template6 .editwebsite-btn{border:0!important;border-radius:999px!important;background:#fff!important;color:var(--t9-deep)!important;box-shadow:0 9px 22px rgba(0,45,56,.22)!important;font-weight:800!important}
+body.lp-template6 .template6-hero-cta{
+  margin-top:26px;padding:13px 34px;display:inline-flex;align-items:center;justify-content:center;
+  border:2px solid #fff;border-radius:999px;background:#fff;color:var(--t9-deep)!important;text-decoration:none;font-size:13px;font-weight:900;letter-spacing:.04em;box-shadow:0 12px 25px rgba(0,0,0,.18);transition:.18s ease
+}
+body.lp-template6 .template6-hero-cta:hover{background:var(--t9-aqua);border-color:var(--t9-aqua);transform:translateY(-2px)}
+body.lp-template6 .template6-ocean-mark{
+  position:absolute;right:4.5%;bottom:132px;z-index:6;width:78px;height:78px;border:2px solid rgba(255,255,255,.75);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(2,71,82,.22);color:#fff;font-size:24px;font-weight:900;backdrop-filter:blur(6px);box-shadow:0 12px 30px rgba(0,0,0,.16)
+}
+
+/* ---------- consistent content width ---------- */
+body.lp-template6 main>section:not(#home),
+body.lp-template6 #news,
+body.lp-template6 #studentServicesBox,
+body.lp-template6 #userBox,
+body.lp-template6 #learningSourceBox,
+body.lp-template6 #learningBaseModule,
+body.lp-template6 #cliproomBox,
+body.lp-template6 #FBpostBox,
+body.lp-template6 #buttonsection,
+body.lp-template6 #featured,
+body.lp-template6 #bestPracticeBox,
+body.lp-template6 #activityBox{position:relative}
+body.lp-template6 #userBox,
+body.lp-template6 #learningSourceBox,
+body.lp-template6 #learningBaseModule{
+  width:min(var(--t9-max),calc(100% - 32px))!important;
+  max-width:var(--t9-max)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+body.lp-template6 #userBox>.container,
+body.lp-template6 #learningSourceBox>.container,
+body.lp-template6 #learningBaseModule>.container{width:100%!important;max-width:none!important;margin:0!important;padding-left:0!important;padding-right:0!important}
+body.lp-template6 .container{max-width:var(--t9-max)}
+
+/* ---------- airy course-style sections ---------- */
+body.lp-template6 .news-section,
+body.lp-template6 .student-services-section,
+body.lp-template6 #userBox,
+body.lp-template6 #learningSourceBox,
+body.lp-template6 #learningBaseModule,
+body.lp-template6 #cliproomBox,
+body.lp-template6 #FBpostBox,
+body.lp-template6 #buttonsection,
+body.lp-template6 #featured,
+body.lp-template6 #bestPracticeBox,
+body.lp-template6 #activityBox{
+  padding-top:58px!important;padding-bottom:58px!important;background:#fff!important
+}
+body.lp-template6 .news-section{padding-top:78px!important}
+body.lp-template6 .section-heading{text-align:center!important}
+body.lp-template6 .section-heading h2,
+body.lp-template6 .student-services-box>h2,
+body.lp-template6 .learning-section-title,
+body.lp-template6 .cliproom-section-title{
+  color:var(--t9-charcoal)!important;
+  font-family:"Brush Script MT","Segoe Script","Kanit","Sarabun",cursive!important;
+  font-style:italic;
+  font-weight:900!important;
+  letter-spacing:-.015em!important;
+}
+body.lp-template6 .section-heading h2::after,
+body.lp-template6 .student-services-box>h2::after{
+  content:"≈≈≈";display:block;width:auto;height:auto;margin:4px auto 0;color:var(--t9-aqua);background:none!important;font-size:21px;line-height:1;font-style:normal;letter-spacing:-.14em
+}
+body.lp-template6 .home-summary-grid{gap:14px!important;border:0!important;box-shadow:none!important}
+body.lp-template6 .home-summary-card{
+  border:1px solid var(--t9-line)!important;border-radius:3px!important;background:#fff!important;box-shadow:var(--t9-shadow-soft)!important
+}
+body.lp-template6 .home-summary-number{color:var(--t9-ocean)!important;font-weight:900!important}
+body.lp-template6 .news-slider,
+body.lp-template6 .student-services-box,
+body.lp-template6 .boss-box,
+body.lp-template6 .student-box,
+body.lp-template6 .learning-source-card,
+body.lp-template6 .cliproom-card,
+body.lp-template6 .facebook-card,
+body.lp-template6 .button-section-card{
+  border-radius:3px!important;border:1px solid var(--t9-line)!important;background:#fff!important;box-shadow:var(--t9-shadow-soft)!important
+}
+body.lp-template6 .news-slider{border-top:4px solid var(--t9-aqua)!important}
+body.lp-template6 .student-services-box{border-top:4px solid var(--t9-ocean)!important;background:#fff!important}
+body.lp-template6 .setting-menu-grid{gap:18px!important}
+body.lp-template6 .setting-menu-item,
+body.lp-template6 .setting-menu-card,
+body.lp-template6 .setting-menu-grid>a,
+body.lp-template6 .setting-menu-grid>button{
+  border-radius:3px!important;border:1px solid var(--t9-line)!important;background:#fff!important;box-shadow:none!important;transition:.2s ease;overflow:hidden
+}
+body.lp-template6 .setting-menu-item:hover,
+body.lp-template6 .setting-menu-card:hover,
+body.lp-template6 .setting-menu-grid>a:hover{transform:translateY(-4px);border-color:var(--t9-aqua)!important;box-shadow:0 14px 30px rgba(0,144,157,.14)!important}
+body.lp-template6 .setting-menu-grid img{filter:saturate(.95) contrast(1.02)}
+body.lp-template6 .news-arrow,
+body.lp-template6 .shopactivity-arrow,
+body.lp-template6 .cliproom-arrow{background:var(--t9-charcoal)!important;color:#fff!important;border:0!important;border-radius:50%!important;box-shadow:none!important}
+body.lp-template6 .news-arrow:hover,
+body.lp-template6 .shopactivity-arrow:hover,
+body.lp-template6 .cliproom-arrow:hover{background:var(--t9-aqua)!important;color:var(--t9-deep)!important}
+body.lp-template6 .shopactivity-dot.active,
+body.lp-template6 .news-dot.active{background:var(--t9-aqua)!important}
+body.lp-template6 .student-services-login-card{border-radius:4px!important;overflow:hidden!important;box-shadow:var(--t9-shadow)!important}
+body.lp-template6 #studentServicesId{border-color:#bdd9dc!important;border-radius:999px!important}
+body.lp-template6 .student-services-login button,
+body.lp-template6 .student-services-login-submit{border-radius:999px!important;background:var(--t9-aqua)!important;color:var(--t9-deep)!important;font-weight:900!important}
+body.lp-template6 .student-services-login button:hover{background:var(--t9-ocean)!important;color:#fff!important}
+
+/* ---------- ocean bands ---------- */
+body.lp-template6 #learningSourceBox,
+body.lp-template6 #FBpostBox{
+  background:linear-gradient(135deg,#07576a,#0c8da4)!important;
+  color:#fff;
+  padding-left:18px!important;padding-right:18px!important;
+  border-radius:4px!important
+}
+body.lp-template6 #learningSourceBox .section-heading h2,
+body.lp-template6 #FBpostBox .section-heading h2,
+body.lp-template6 #learningSourceBox h2,
+body.lp-template6 #FBpostBox h2{color:#fff!important}
+body.lp-template6 #learningSourceBox .section-heading p,
+body.lp-template6 #FBpostBox .section-heading p{color:#dff8f8!important}
+body.lp-template6 #learningBaseModule{
+  background:linear-gradient(135deg,#e8fbfb,#c9f5f3)!important;
+  padding-left:18px!important;padding-right:18px!important;
+  border-radius:4px!important
+}
+body.lp-template6 #learningBaseModule *{--shopactivity-accent:var(--t9-aqua)}
+body.lp-template6 #learningBaseModule .container,
+body.lp-template6 #learningBaseModule .shopactivity-preview-inner{background:#fff;border-radius:4px;padding:18px!important;box-shadow:var(--t9-shadow)}
+
+/* ---------- buttons ---------- */
+body.lp-template6 .admin-manage-data-button,
+body.lp-template6 .cliproom-open-all,
+body.lp-template6 .view-all-button,
+body.lp-template6 .readbook-open-all,
+body.lp-template6 .btn-primary,
+body.lp-template6 .primary-button{
+  border:0!important;border-radius:999px!important;background:var(--t9-aqua)!important;color:var(--t9-deep)!important;font-weight:900!important;box-shadow:0 8px 18px rgba(16,215,210,.22)!important
+}
+body.lp-template6 .admin-manage-data-button:hover,
+body.lp-template6 .cliproom-open-all:hover,
+body.lp-template6 .view-all-button:hover{background:var(--t9-ocean)!important;color:#fff!important;transform:translateY(-1px)}
+
+/* ---------- generic subpages ---------- */
+body.lp-template6:not(:has(#home)){
+  background:linear-gradient(180deg,var(--t9-charcoal) 0,var(--t9-deep) 170px,#f5fbfb 170px,#f5fbfb 100%)!important;
+}
+body.lp-template6 :is(.course-page,.report-page,.reward-page,.media-page,.innovation-page,.bp-page,.about-page,.users-page,.plan-page,.fb-page){
+  min-height:100vh!important;padding:32px 16px 64px!important;background:transparent!important
+}
+body.lp-template6 :is(.course-container,.report-container,.reward-container,.media-container,.innovation-container,.bp-container,.about-container,.users-container,.plan-container,.fb-container){width:min(var(--t9-max),100%)!important;margin:0 auto!important}
+body.lp-template6 :is(.course-topbar,.report-topbar,.reward-topbar,.media-topbar,.innovation-topbar,.bp-topbar,.about-topbar,.users-topbar,.plan-topbar,.fb-topbar){margin-bottom:20px!important}
+body.lp-template6 :is(.course-back,.report-back,.reward-back,.media-back,.innovation-back,.bp-back,.about-back,.users-back,.plan-back,.fb-back){
+  border:1px solid rgba(255,255,255,.42)!important;border-radius:999px!important;background:rgba(255,255,255,.08)!important;color:#fff!important;box-shadow:none!important
+}
+body.lp-template6 :is(.course-heading,.report-heading,.reward-heading,.media-heading,.innovation-heading,.bp-heading,.about-heading,.users-heading,.plan-heading,.fb-heading){
+  position:relative;overflow:hidden;margin-bottom:18px!important;padding:30px 32px!important;border:0!important;border-radius:4px!important;background:linear-gradient(115deg,#07566a,#0da6b6)!important;color:#fff!important;box-shadow:var(--t9-shadow)!important
+}
+body.lp-template6 :is(.course-heading,.report-heading,.reward-heading,.media-heading,.innovation-heading,.bp-heading,.about-heading,.users-heading,.plan-heading,.fb-heading)::after{
+  content:"";position:absolute;right:-35px;bottom:-80px;width:240px;height:150px;border:8px solid rgba(255,255,255,.12);border-radius:50%;background:transparent
+}
+body.lp-template6 :is(.course-heading,.report-heading,.reward-heading,.media-heading,.innovation-heading,.bp-heading,.about-heading,.users-heading,.plan-heading,.fb-heading) h1{position:relative;z-index:2;color:#fff!important;font-weight:900!important;letter-spacing:-.02em!important}
+body.lp-template6 :is(.course-heading,.report-heading,.reward-heading,.media-heading,.innovation-heading,.bp-heading,.about-heading,.users-heading,.plan-heading,.fb-heading) p{position:relative;z-index:2;color:#d6ffff!important;font-weight:700!important}
+body.lp-template6 :is(.course-panel,.report-panel,.reward-panel,.media-panel,.innovation-panel,.bp-panel,.about-panel,.users-panel,.plan-panel,.fb-panel){
+  border:1px solid var(--t9-line)!important;border-radius:4px!important;background:#fff!important;box-shadow:var(--t9-shadow)!important;overflow:hidden
+}
+body.lp-template6 :is(.course-table,.report-table,.reward-table,.media-table,.innovation-table,.bp-table,.users-table,.plan-table) th{background:var(--t9-charcoal)!important;color:#fff!important;font-weight:800!important}
+body.lp-template6 :is(.course-table,.report-table,.reward-table,.media-table,.innovation-table,.bp-table,.users-table,.plan-table) tbody tr:hover{background:#edffff!important}
+body.lp-template6 :is(.course-download,.report-download,.reward-download,.media-download,.innovation-download,.bp-download,.plan-download){border-radius:999px!important;background:var(--t9-aqua)!important;color:var(--t9-deep)!important;font-weight:900!important}
+body.lp-template6 :is(input,select,textarea):focus{border-color:var(--t9-aqua)!important;box-shadow:0 0 0 3px rgba(16,215,210,.16)!important;outline:none!important}
+
+/* ---------- profile / misc pages ---------- */
+body.lp-template6 .wrap,
+body.lp-template6 .page-wrap,
+body.lp-template6 .page-container,
+body.lp-template6 .content-wrapper{max-width:var(--t9-max);margin-left:auto;margin-right:auto}
+body.lp-template6 .card,
+body.lp-template6 .panel{border-radius:4px;border-color:var(--t9-line);box-shadow:var(--t9-shadow-soft)}
+
+/* ---------- admin modal safety ---------- */
+
+
+
+/* Do not force hidden/static modals open. Their original CSS/JS controls display. */
+
+
+
+
+/* ---------- footer ---------- */
+body.lp-template6 footer,
+body.lp-template6 .site-footer{background:var(--t9-charcoal)!important;color:#fff!important;border-top:5px solid var(--t9-aqua)!important}
+body.lp-template6 footer a,
+body.lp-template6 .site-footer a{color:#fff!important}
+
+/* ---------- responsive ---------- */
+@media(max-width:1100px){
+  body.lp-template6 .site-header .brand{min-width:145px}
+  body.lp-template6 .main-nav>a,body.lp-template6 .main-nav-dropdown-toggle{padding:0 8px!important;font-size:11px!important}
+}
+@media(max-width:860px){
+  body.lp-template6 .site-header{position:relative;margin:0;background:var(--t9-deep)!important}
+  body.lp-template6 #home.hero,body.lp-template6 .hero{padding-top:0;min-height:540px;height:auto}
+  body.lp-template6 .hero-content{min-height:540px;padding:82px 24px 135px!important}
+  body.lp-template6 .template6-ocean-mark{display:none}
+  body.lp-template6 .editwebsite{top:14px!important}
+}
+@media(max-width:620px){
+  body.lp-template6 .announcement-inner{width:100%!important;padding-inline:10px!important}
+  body.lp-template6 #home.hero::after,body.lp-template6 .hero::after{bottom:-175px;height:250px}
+  body.lp-template6 #heroTitleText,body.lp-template6 .hero h1{font-size:clamp(38px,13vw,60px)!important}
+  body.lp-template6 .hero-content{min-height:490px;padding:70px 18px 120px!important}
+  body.lp-template6 #userBox,body.lp-template6 #learningSourceBox,body.lp-template6 #learningBaseModule{width:calc(100% - 18px)!important}
+  body.lp-template6 :is(.course-page,.report-page,.reward-page,.media-page,.innovation-page,.bp-page,.about-page,.users-page,.plan-page,.fb-page){padding:18px 8px 44px!important}
+  body.lp-template6 :is(.course-heading,.report-heading,.reward-heading,.media-heading,.innovation-heading,.bp-heading,.about-heading,.users-heading,.plan-heading,.fb-heading){padding:23px 18px!important}
+}
+
+/* Keep the learning sections full width while centering their content. */
+body.lp-template6 main > section#learningSourceBox,
+body.lp-template6 main > section#learningBaseModule {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+body.lp-template6 main > section#learningSourceBox > .container,
+body.lp-template6 main > section#learningBaseModule > .container {
+  width: min(var(--t9-max), calc(100% - 32px)) !important;
+  max-width: var(--t9-max) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
